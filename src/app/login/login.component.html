@@ -1,0 +1,36 @@
+<div class="container">
+  <div id="login">
+    <h1>This is an example of the Authorization Code flow</h1>
+    <a  class="btn btn-primary" (click)="LoginSpotify()">Log in with Spotify</a>
+  </div>
+  <div id="loggedin">
+    <div id="user-profile">
+    </div>
+    <div id="oauth">
+    </div>
+    <button class="btn btn-default" id="obtain-new-token">Obtain new token using the refresh token</button>
+  </div>
+</div>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <script>
+    window.onload = function () {
+      var hash = window.location.hash;
+      if (window.location.search.substring(1).indexOf("error") !== -1) {
+        // login failure
+        window.close();
+      } else if (hash) {
+        // login success
+        var token = window.location.hash.split('&')[0].split('=')[1];
+        localStorage.setItem('spotify-token', token);
+      }
+    }
+  </script>
+</head>
+<body>
+
+</body>
+
